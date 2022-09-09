@@ -8,11 +8,11 @@ if(isset($_GET['deleteid'])){
     $result = mysqli_query($conn,$sql);
 
     if($result){
-        echo "<script>alert('Has been deleted.');window.location='/portal-berita/admin.php'</script>";
+        echo "<script>alert('Has been deleted.');window.location='/portalberita/admin.php'</script>";
     } else {
         die(mysqli_error($conn));
     } 
 } else {
-    echo "<script>alert('ID not change');window.location='/portal-berita/admin.php'</script>";
+    echo "<script>alert('ID not change');window.location='/portalberita/admin.php'</script>";
 }
 ?>
