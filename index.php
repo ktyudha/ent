@@ -107,7 +107,7 @@ $queri = mysqli_query($conn, $sql);
                     <?php
                     while ($data = mysqli_fetch_array($queri)) {
                     ?>
-                        <a href="artikel1.php" style="text-decoration:none;">
+                        <a href=artikel.php?id=<?= $data['id']?> style="text-decoration:none;">
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>

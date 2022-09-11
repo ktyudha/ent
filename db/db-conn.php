@@ -3,8 +3,8 @@
 date_default_timezone_set("Asia/Jakarta");
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "ent17";
+$password = "BYaRdcQ1Njha4M{!";
 $dbname = "portalweb";
 
 // Create connection
