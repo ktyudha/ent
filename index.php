@@ -1,7 +1,9 @@
 <?php
 include "db/db-conn.php";
 
+$user = "SELECT * FROM users";
 $sql = "SELECT * FROM portalweb";
+
 $category = "";
 
 if (isset($_GET['category'])) {
@@ -9,6 +11,7 @@ if (isset($_GET['category'])) {
     $sql = "SELECT * FROM portalweb WHERE category ='$category'";
 }
 
+$query = mysqli_query($conn, $user);
 $queri = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -19,7 +22,7 @@ $queri = mysqli_query($conn, $sql);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/rsz_2logo2.png" type="image/x-icon">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
     <title>Event Suroboyo</title>
 </head>
@@ -33,11 +36,11 @@ $queri = mysqli_query($conn, $sql);
                     <nav class="navbar navbar-light navbar-expand-lg">
                         <a class="navbar-brand" href="index.php"><img src="img/rsz_2logo2.png" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="navbar-nav ml-auto">
+                            <ul class="navbar-nav ms-auto">
                                 <li class="nav-item"> <a class="nav-link" href="index.php">Beranda</a> </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Artikel</a>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                    <ul class="dropdown-menu dropdown-menu-light">
                                         <li><a class="dropdown-item" name="lifestyle" href="?category=lifestyle">Lifestyle</a></li>
                                         <li><a class="dropdown-item" name="hiburan" href="?category=hiburan">Hiburan</a></li>
                                         <li><a class="dropdown-item" name="teknologi" href="?category=teknologi">Teknologi</a></li>
@@ -68,35 +71,57 @@ $queri = mysqli_query($conn, $sql);
     <header class="" id="beranda">
         <div class="container text-dark mt-5">
             <h1 class="text-success"><b>EVENT SUROBOYO</b></h1>
-            <h3><?php echo $category; ?></h3>
+            <h3><?php echo strtoupper($category); ?>
+                <hr class="border opacity-50">
+            </h3>
         </div>
     </header>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <?php
-            while ($data = mysqli_fetch_array($queri)) {
-            ?>
-                <div class="col-md-6 mx-auto">
-                    <div class="section" id="<?php echo $data['category']; ?>">
-                        <div class="card my-5" style="width: 30rem;">
-                            <img src="<?php echo $data['image_url']; ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5><?php echo $data['tagline']; ?></h5>
-                                <p class="text-mute">Admin - <?php echo $data['category']; ?> </p>
-                                <p class="card-text"><?php echo $data['content']; ?></p>
-                                <p><i><?php echo date("F j, Y, g:i a", $data['date']) ?></i></p>
-                            </div>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="py-2 border-b-4">
+                        <h4 class="fw-bold text-uppercase">Artikel</h4>
                     </div>
-                <?php
-            }
-                ?>
+                    <?php
+                    while ($data = mysqli_fetch_array($queri)) {
+                    ?>
+                        <a href="artikel1.php" style="text-decoration:none;">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 12rem;" class="text-start"><img src="<?php echo $data['image_url']; ?>" style="height:12rem; width: 12rem;"></td>
+                                        <td class="my-auto">
 
+                                            <h5 class="fw-bold text-capitalize"><?php echo $data['tagline']; ?></h5>
+                                            <p class="text-dark"><?php echo $data['resume']; ?></p>
+                                            <span><small class="fw-bold text-capitalize"><?php echo $data['category']; ?></small> - <small class="text-muted"><?php echo date("F j, Y", $data['date']) ?></small></span>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
+                    <?php
+                    }
+                    ?>
                 </div>
+                <div class="col-md-4">
+                    <section>
+                        <div class="py-2">
+                            <h4 class="fw-bold text-uppercase">Latest video on youtube</h4>
+                        </div>
+                        <div class="ratio ratio-16x9 flex justify-center items-center">
+                            <iframe src="https://www.youtube.com/embed/Pp-t1MvJwD4" title="Museum Surabaya: Saksi Bisu Sejarah" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="ratio ratio-16x9"></iframe>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
-    <footer class="my-5 text-center text-success">
+
+    <footer class="text-center text-success">
         <a class="text-success" href="https://instagram.com/eventsuroboyo"><span class="ti-instagram"></span> @eventsuroboyo</a><br>
         <small class="text-success">
             <a href="#beranda" class="text-success m-2">Beranda</a>
@@ -107,7 +132,6 @@ $queri = mysqli_query($conn, $sql);
         </small>
         <p class="mb-2"><small>© 2022. Kurniawan Try Yudha</small> </p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="bootstrap/js/jquery-3.2.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
     <script src="bootstrap/js/script.js"></script>

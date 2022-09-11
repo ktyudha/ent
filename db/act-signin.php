@@ -21,9 +21,10 @@ if (isset($_POST['signin'])) {
     $last_id = mysqli_insert_id($conn);
     error_reporting(0);
     $row = mysqli_fetch_assoc($result);
-    header("location: /portalberita/admin.php");
+    header("location: /portalberita/admin");
   } 
 
+  $_SESSION["username"] = $username;
   $_SESSION["email"] = $email;
   $_SESSION["password"] = $password;
 }
