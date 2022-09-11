@@ -21,10 +21,10 @@ $queri = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/rsz_2logo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logopens-biru.png" style="width: 50px;" type="image/x-icon">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
-    <title>Event Suroboyo</title>
+    <title>PENS</title>
 </head>
 
 <body data-spy="scroll" data-target="#navbar" data-offset="30">
@@ -34,7 +34,7 @@ $queri = mysqli_query($conn, $sql);
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-light navbar-expand-lg">
-                        <a class="navbar-brand" href="index.php"><img src="img/rsz_2logo2.png" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        <a class="navbar-brand" href="index.php"><img src="img/logopens-biru.png" style="width: 50px;" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item"> <a class="nav-link" href="index.php">Beranda</a> </li>
@@ -52,12 +52,12 @@ $queri = mysqli_query($conn, $sql);
                                 <li class="nav-item"> <a class="nav-link" href="#informasi">Informasi</a> </li>
                                 <li class="nav-item mx-2">
                                     <a href="/portalberita/signup">
-                                        <input type="button" class="btn btn-success" value="Daftar">
+                                        <input type="button" class="btn btn-primary" value="Daftar">
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/portalberita/signin">
-                                        <input type="button" class="btn btn-outline-success" value="Masuk">
+                                        <input type="button" class="btn btn-outline-primary" value="Masuk">
                                     </a>
                                 </li>
                             </ul>
@@ -69,9 +69,29 @@ $queri = mysqli_query($conn, $sql);
     </div>
 
     <header class="" id="beranda">
-        <div class="container text-dark mt-5">
-            <h1 class="text-success"><b>EVENT SUROBOYO</b></h1>
-            <h3><?php echo strtoupper($category); ?>
+        <div class="container text-dark mt-5 ">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-3">
+                    <div class="carousel-item active">
+                        <img src="img/newsflash.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/newsflash.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/newsflash.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <h3 class="mt-5"><?php echo strtoupper($category); ?>
                 <hr class="border opacity-50">
             </h3>
         </div>
@@ -121,14 +141,14 @@ $queri = mysqli_query($conn, $sql);
         </div>
     </div>
 
-    <footer class="text-center text-success">
-        <a class="text-success" href="https://instagram.com/eventsuroboyo"><span class="ti-instagram"></span> @eventsuroboyo</a><br>
-        <small class="text-success">
-            <a href="#beranda" class="text-success m-2">Beranda</a>
-            <a href="#Artikel" class="text-success m-2">Artikel</a>
-            <a href="#video" class="text-success m-2">Video</a>
-            <a href="/ent" class="text-success m-2">Suroboyo Bus</a>
-            <a href="#informasi" class="text-success m-2">Informasi</a>
+    <footer class="text-center text-primary">
+        <a class="text-primary" href="https://instagram.com/eventsuroboyo"><span class="ti-instagram"></span> @eventsuroboyo</a><br>
+        <small class="text-primary">
+            <a href="#beranda" class="text-primary m-2">Beranda</a>
+            <a href="#Artikel" class="text-primary m-2">Artikel</a>
+            <a href="#video" class="text-primary m-2">Video</a>
+            <a href="/ent" class="text-primary m-2">Suroboyo Bus</a>
+            <a href="#informasi" class="text-primary m-2">Informasi</a>
         </small>
         <p class="mb-2"><small>© 2022. Kurniawan Try Yudha</small> </p>
     </footer>
